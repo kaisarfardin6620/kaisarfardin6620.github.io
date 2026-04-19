@@ -39,7 +39,12 @@ export function Projects() {
         <StaggerChildren className="space-y-6">
           {projects.map((project) => {
             const Icon = iconMap[project.icon] ?? Code;
-            const hasLinks = Boolean(project.links?.live || project.links?.repo);
+            const hasLinks = Boolean(
+              project.links?.live ||
+                project.links?.repo ||
+                project.links?.playStore ||
+                project.links?.appStore,
+            );
             return (
               <motion.div key={project.title} variants={staggerItem}>
                 <Card className="group relative overflow-hidden border-border/50 bg-card/60 backdrop-blur-xl transition-all duration-300 hover:border-primary/35 hover:shadow-2xl hover:shadow-primary/10">
@@ -69,6 +74,28 @@ export function Projects() {
 
                       {hasLinks && (
                         <div className="flex items-center gap-2">
+                          {project.links?.playStore && (
+                            <a
+                              href={project.links.playStore}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
+                            >
+                              Play Store
+                              <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                            </a>
+                          )}
+                          {project.links?.appStore && (
+                            <a
+                              href={project.links.appStore}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
+                            >
+                              App Store
+                              <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                            </a>
+                          )}
                           {project.links?.live && (
                             <a
                               href={project.links.live}

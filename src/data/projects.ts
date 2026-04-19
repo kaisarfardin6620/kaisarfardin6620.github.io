@@ -10,6 +10,8 @@ export interface Project {
   links?: {
     live?: string;
     repo?: string;
+    playStore?: string;
+    appStore?: string;
   };
 }
 
@@ -108,6 +110,11 @@ export const projects: Project[] = [
       "Implemented event-driven ingestion with FastAPI and LLM-assisted insight generation for risk narratives.",
     impact:
       "Delivered near real-time financial intelligence and faster decision support for analysis workflows.",
+    links: {
+      playStore:
+        "https://play.google.com/store/apps/details?id=com.RealWealth.ReHo",
+      appStore: "https://apps.apple.com/us/app/reho/id6755340157",
+    },
     tech: ["FastAPI", "MongoDB", "Redis", "LLMs"],
     gradient: "from-emerald-500/20 to-teal-600/20",
     icon: "Code",
