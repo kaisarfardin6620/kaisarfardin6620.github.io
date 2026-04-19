@@ -41,9 +41,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-grid">
+        <div className="grain-overlay" />
         <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <main className="relative z-10 flex-1">{children}</main>
+        <div className="relative z-10">
+          <Footer />
+        </div>
       </body>
     </html>
   );

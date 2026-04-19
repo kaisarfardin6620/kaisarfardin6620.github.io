@@ -9,7 +9,7 @@ import { StaggerChildren, staggerItem } from "@/components/motion/stagger-childr
 
 export function Education() {
   return (
-    <section id="education" className="py-32 px-6 bg-secondary/10">
+    <section id="education" className="section-surface py-24 px-6 md:py-32">
       <div className="mx-auto max-w-5xl">
         <SectionHeading
           label="// education"

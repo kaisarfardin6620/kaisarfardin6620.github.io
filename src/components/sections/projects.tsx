@@ -24,7 +24,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function Projects() {
   return (
-    <section id="projects" className="py-32 px-6">
+    <section id="projects" className="section-surface py-24 px-6 md:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           label="// projects"
@@ -37,25 +37,25 @@ export function Projects() {
             const Icon = iconMap[project.icon] ?? Code;
             return (
               <motion.div key={project.title} variants={staggerItem}>
-                <Card className="group relative h-full overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:neon-glow">
+                <Card className="group relative h-full overflow-hidden border-border/50 bg-card/65 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl">
                   {/* Gradient accent */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                    className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-r ${project.gradient} opacity-70`}
                   />
 
-                  <CardContent className="relative p-6">
-                    <div className="mb-4 flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/50 bg-background/50">
+                  <CardContent className="relative flex h-full flex-col p-6">
+                    <div className="mb-5 flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/60 bg-background/80 shadow-sm">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
-                      <h3 className="font-semibold text-lg">{project.title}</h3>
+                      <h3 className="text-lg font-semibold leading-tight">{project.title}</h3>
                     </div>
 
                     <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
                       {project.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="mt-auto flex flex-wrap gap-2">
                       {project.tech.map((t) => (
                         <TechBadge key={t}>{t}</TechBadge>
                       ))}

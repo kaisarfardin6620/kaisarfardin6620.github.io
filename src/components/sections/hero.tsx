@@ -19,7 +19,7 @@ export function Hero() {
   const orbTwoY = useTransform(scrollY, [0, 600], [0, 60]);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-16">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pb-10 pt-24 md:pt-28">
       {/* Background image */}
       <motion.div className="pointer-events-none absolute inset-0" style={{ y: backgroundY }}>
         <Image
@@ -50,7 +50,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/50 bg-secondary/50 px-4 py-1.5 text-sm backdrop-blur-sm"
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/50 bg-secondary/55 px-4 py-1.5 text-xs font-medium tracking-wide backdrop-blur-sm sm:text-sm"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
@@ -64,9 +64,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-4 text-5xl font-bold tracking-tight sm:text-7xl"
+          className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
         >
-          <span className="gradient-text text-nowrap">Abdullah Kaisar Fardin</span>
+          <span className="gradient-text">Abdullah Kaisar Fardin</span>
         </motion.h1>
 
         {/* Handle */}
@@ -74,7 +74,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-6 font-mono text-sm text-muted-foreground"
+          className="mb-6 font-mono text-xs tracking-wider text-muted-foreground sm:text-sm"
         >
           @kaisarfardin6620
         </motion.p>
@@ -84,7 +84,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground sm:text-xl"
+          className="mx-auto mb-8 max-w-3xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl"
         >
           AI Developer specializing in Generative AI systems and scalable backend
           engineering — from multimodal AI pipelines to Hybrid RAG systems.
@@ -94,7 +94,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mb-10 flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-muted-foreground"
+          className="mb-10 flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-muted-foreground sm:gap-3"
         >
           <span className="rounded-full border border-border/50 bg-secondary/40 px-3 py-1 backdrop-blur-sm">
             AI systems
@@ -112,7 +112,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-4"
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         >
           <a href="#projects" className={cn(buttonVariants({ size: "lg" }), "neon-glow transition-transform duration-200 hover:-translate-y-0.5")}> 
             View Projects
@@ -174,7 +174,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="mt-20"
+          className="mt-14"
         >
           <a
             href="#about"
