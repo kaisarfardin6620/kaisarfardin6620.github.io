@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { CursorSpotlight } from "@/components/layout/cursor-spotlight";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,7 +42,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-grid">
+        <CursorSpotlight />
         <div className="grain-overlay" />
+        <div className="pointer-events-none fixed inset-0 z-[45]">
+          <div className="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-b from-cyan-400/70 via-primary/70 to-violet-500/70" />
+          <div className="absolute inset-y-0 right-0 w-[2px] bg-gradient-to-b from-cyan-400/70 via-primary/70 to-violet-500/70" />
+          <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-cyan-400/70 via-primary/70 to-violet-500/70" />
+        </div>
         <Navbar />
         <main className="relative z-10 flex-1">{children}</main>
         <div className="relative z-10">

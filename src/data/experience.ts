@@ -10,7 +10,7 @@ export const experiences: Experience[] = [
   {
     company: "SparkTech Agency",
     role: "Jr AI Developer",
-    period: "2025 — Present",
+    period: "Aug 2025 — Present",
     description:
       "Architected modular monolith backends using Django 5 and FastAPI. Engineered high-concurrency AI pipelines by splitting Celery worker pools. Developed Hybrid KG-RAG systems integrating Neo4j and Pinecone.",
     tech: ["Django 5", "FastAPI", "Neo4j", "Pinecone", "Celery", "Redis"],

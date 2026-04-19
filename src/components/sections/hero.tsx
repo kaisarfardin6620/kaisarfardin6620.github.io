@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Download, FileText, ShieldCheck, Zap, ChartNoAxesCombined } from "lucide-react";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/ui/icons";
@@ -12,11 +13,28 @@ const resumeViewUrl =
 const resumeDownloadUrl =
   "https://drive.google.com/uc?export=download&id=1B3NntqRjhiJDoTCi8ttFdlee674EhyMw";
 
+const cinematicPhrases = [
+  "real-time AI products",
+  "mission-critical backend systems",
+  "high-concurrency LLM platforms",
+  "explainable intelligence workflows",
+];
+
 export function Hero() {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+
   const { scrollY } = useScroll();
   const backgroundY = useTransform(scrollY, [0, 600], [0, 90]);
   const orbOneY = useTransform(scrollY, [0, 600], [0, -50]);
   const orbTwoY = useTransform(scrollY, [0, 600], [0, 60]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setPhraseIndex((prev) => (prev + 1) % cinematicPhrases.length);
+    }, 2200);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pb-10 pt-24 md:pt-28">
@@ -31,6 +49,27 @@ export function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
       </motion.div>
+
+      {/* Cinematic light layers */}
+      <div className="pointer-events-none absolute inset-0">
+        <motion.div
+          animate={{ opacity: [0.2, 0.4, 0.25], scale: [1, 1.08, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[-18%] top-[-12%] h-[36rem] w-[36rem] rounded-full bg-cyan-400/10 blur-[120px]"
+        />
+        <motion.div
+          animate={{ opacity: [0.2, 0.38, 0.22], scale: [1.04, 1, 1.05] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+          className="absolute right-[-15%] top-[6%] h-[34rem] w-[34rem] rounded-full bg-violet-500/10 blur-[120px]"
+        />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 20%, hsl(var(--primary)/0.20) 0, transparent 40%), radial-gradient(circle at 80% 70%, hsl(var(--primary)/0.15) 0, transparent 42%)",
+          }}
+        />
+      </div>
 
       {/* Gradient orbs */}
       <div className="pointer-events-none absolute inset-0">
@@ -87,7 +126,17 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mb-3 max-w-3xl text-balance text-xl leading-tight text-foreground sm:text-2xl"
         >
-          Designing <span className="text-primary">production-grade AI systems</span> that combine research depth with shipping speed.
+          Designing <span className="text-primary">production-grade AI systems</span> for{" "}
+          <motion.span
+            key={phraseIndex}
+            initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="inline-block bg-gradient-to-r from-cyan-400 via-primary to-violet-400 bg-clip-text font-semibold text-transparent"
+          >
+            {cinematicPhrases[phraseIndex]}
+          </motion.span>
+          .
         </motion.p>
 
         <motion.p

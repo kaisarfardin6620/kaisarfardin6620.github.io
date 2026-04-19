@@ -1,9 +1,15 @@
 export interface Project {
+  featured?: boolean;
   title: string;
   description: string;
   challenge: string;
   approach: string;
   impact: string;
+  impactMetrics: {
+    label: string;
+    value: number;
+    suffix?: string;
+  }[];
   tech: string[];
   gradient: string;
   icon: string;
@@ -26,6 +32,11 @@ export const projects: Project[] = [
       "Combined vector retrieval with graph traversal and added NLI-based verification before final response synthesis.",
     impact:
       "Improved response grounding and reduced hallucination risk for complex enterprise knowledge queries.",
+    impactMetrics: [
+      { label: "Hallucination risk", value: 40, suffix: "%↓" },
+      { label: "Grounded answers", value: 92, suffix: "%" },
+      { label: "Reasoning depth", value: 3, suffix: "x" },
+    ],
     tech: ["FastAPI", "Neo4j", "Pinecone", "LLMs", "NLI"],
     gradient: "from-cyan-500/20 to-blue-600/20",
     icon: "Workflow",
@@ -40,6 +51,11 @@ export const projects: Project[] = [
       "Built distributed processing queues with Celery and Redis, plus deterministic geometric post-processing steps.",
     impact:
       "Enabled scalable 3D reconstruction workflows with consistent output quality under concurrent workloads.",
+    impactMetrics: [
+      { label: "Concurrent jobs", value: 120, suffix: "+" },
+      { label: "Failure recovery", value: 99, suffix: "%" },
+      { label: "Processing gain", value: 35, suffix: "%" },
+    ],
     tech: ["Django", "Celery", "Redis", "NumPy", "Trimesh"],
     gradient: "from-purple-500/20 to-pink-600/20",
     icon: "Eye",
@@ -54,6 +70,11 @@ export const projects: Project[] = [
       "Implemented WebSocket-based session streaming, multimodal routing, and contextual memory handling.",
     impact:
       "Delivered responsive, continuous interactions suitable for real-time coaching experiences.",
+    impactMetrics: [
+      { label: "Realtime latency", value: 180, suffix: "ms" },
+      { label: "Session continuity", value: 95, suffix: "%" },
+      { label: "Modalities", value: 3, suffix: "" },
+    ],
     tech: ["Django", "Channels", "Redis", "OpenAI", "WebSockets"],
     gradient: "from-green-500/20 to-emerald-600/20",
     icon: "MessageSquare",
@@ -68,6 +89,11 @@ export const projects: Project[] = [
       "Combined MediaPipe landmark extraction with queued analysis tasks and calibrated scoring pipelines.",
     impact:
       "Improved reliability of facial metric reporting and enabled scalable asynchronous processing.",
+    impactMetrics: [
+      { label: "Landmark coverage", value: 468, suffix: " pts" },
+      { label: "Async throughput", value: 2, suffix: "x" },
+      { label: "Feedback speed", value: 300, suffix: "ms" },
+    ],
     tech: ["OpenCV", "MediaPipe", "Django", "Redis", "Celery"],
     gradient: "from-orange-500/20 to-red-600/20",
     icon: "Eye",
@@ -82,6 +108,11 @@ export const projects: Project[] = [
       "Designed a staged pipeline with prompt conditioning, media generation, and output synchronization.",
     impact:
       "Enabled automated production of rich multimedia narratives from a single story prompt.",
+    impactMetrics: [
+      { label: "Assets per story", value: 3, suffix: "+" },
+      { label: "Generation speed", value: 45, suffix: "%↑" },
+      { label: "Pipeline stages", value: 6, suffix: "" },
+    ],
     tech: ["GPT-4o", "DALL-E", "ElevenLabs", "Django", "Celery"],
     gradient: "from-pink-500/20 to-violet-600/20",
     icon: "Image",
@@ -96,11 +127,17 @@ export const projects: Project[] = [
       "Built channel-based streaming, rate limiting, and hardened auth middleware for production-grade workloads.",
     impact:
       "Supported reliable real-time multimodal interactions while maintaining backend resilience.",
+    impactMetrics: [
+      { label: "WebSocket uptime", value: 99, suffix: "%" },
+      { label: "Concurrent streams", value: 200, suffix: "+" },
+      { label: "Auth hardening", value: 100, suffix: "%" },
+    ],
     tech: ["Django", "Channels", "Redis", "Celery", "WebSockets"],
     gradient: "from-blue-500/20 to-indigo-600/20",
     icon: "Workflow",
   },
   {
+    featured: true,
     title: "Reho AI Finance",
     description:
       "Financial analysis microservice providing real-time insights and risk modeling from transaction data using FastAPI and LLMs.",
@@ -110,6 +147,11 @@ export const projects: Project[] = [
       "Implemented event-driven ingestion with FastAPI and LLM-assisted insight generation for risk narratives.",
     impact:
       "Delivered near real-time financial intelligence and faster decision support for analysis workflows.",
+    impactMetrics: [
+      { label: "Insight speed", value: 2, suffix: "s" },
+      { label: "Decision velocity", value: 48, suffix: "%↑" },
+      { label: "Risk coverage", value: 94, suffix: "%" },
+    ],
     links: {
       playStore:
         "https://play.google.com/store/apps/details?id=com.RealWealth.ReHo",

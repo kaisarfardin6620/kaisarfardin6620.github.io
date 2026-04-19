@@ -1,7 +1,7 @@
 "use client";
 
-import { act, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -18,6 +18,12 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [activeHref, setActiveHref] = useState<string>("#about");
+  const { scrollYProgress } = useScroll();
+  const progressX = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    mass: 0.2,
+  });
 
   useEffect(() => {
     const sections = links
@@ -44,6 +50,13 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 z-50 w-full px-4 pt-3">
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px] bg-primary/10">
+        <motion.div
+          className="h-full origin-left bg-gradient-to-r from-cyan-400 via-primary to-violet-500"
+          style={{ scaleX: progressX }}
+        />
+      </div>
+
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between rounded-2xl border border-border/60 bg-background/70 px-4 shadow-lg shadow-black/5 backdrop-blur-xl md:h-16 md:px-6">
         <a href="#" className="font-mono text-sm font-bold tracking-wider">
           <span className="gradient-text">kaisar</span>
@@ -55,13 +68,20 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`rounded-full px-3 py-1.5 text-sm transition-colors ${
+              className={`relative rounded-full px-3 py-1.5 text-sm transition-colors ${
                 activeHref === link.href
-                  ? "bg-background text-foreground shadow-sm"
+                  ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              {link.label}
+              {activeHref === link.href && (
+                <motion.span
+                  layoutId="desktop-active-pill"
+                  className="absolute inset-0 rounded-full bg-background shadow-sm"
+                  transition={{ type: "spring", stiffness: 450, damping: 35, mass: 0.6 }}
+                />
+              )}
+              <span className="relative z-10">{link.label}</span>
             </a>
           ))}
         </div>
@@ -101,13 +121,20 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`rounded-xl px-3 py-2 text-sm transition-colors ${
+                  className={`relative rounded-xl px-3 py-2 text-sm transition-colors ${
                     activeHref === link.href
-                      ? "bg-secondary text-foreground"
+                      ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {link.label}
+                  {activeHref === link.href && (
+                    <motion.span
+                      layoutId="mobile-active-pill"
+                      className="absolute inset-0 rounded-xl bg-secondary"
+                      transition={{ type: "spring", stiffness: 420, damping: 34, mass: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.label}</span>
                 </a>
               ))}
             </div>
