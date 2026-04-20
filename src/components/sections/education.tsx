@@ -20,8 +20,17 @@ export function Education() {
         <StaggerChildren className="grid gap-6 md:grid-cols-2">
           {education.map((edu, i) => (
             <motion.div key={`${edu.degree}-${i}`} variants={staggerItem}>
-              <Card className="h-full border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/30">
-                <CardContent className="p-6">
+              <Card className="floating-glass-card group relative h-full overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
+                <div
+                  className={`absolute inset-x-0 top-0 h-24 bg-gradient-to-r ${
+                    i % 2 === 0
+                      ? "from-cyan-500/20 to-blue-600/20"
+                      : "from-violet-500/20 to-fuchsia-600/20"
+                  } opacity-80`}
+                />
+                <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
+
+                <CardContent className="relative p-6">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border/50 bg-background/50">
                     <GraduationCap className="h-6 w-6 text-primary" />
                   </div>

@@ -39,8 +39,11 @@ export function About() {
               </div>
 
               {/* Terminal block */}
-              <Card className="border-border/50 bg-card/50 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <CardContent className="p-4">
+              <Card className="floating-glass-card group relative overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
+                <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 opacity-80" />
+                <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
+
+                <CardContent className="relative p-4">
                   <div className="mb-3 flex items-center gap-2">
                     <div className="h-3 w-3 rounded-full bg-red-500/70" />
                     <div className="h-3 w-3 rounded-full bg-yellow-500/70" />
@@ -100,8 +103,17 @@ $ echo $STATUS
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.1 }}
                   >
-                    <Card className="border-border/50 bg-card/50 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-                      <CardContent className="p-4 text-center">
+                    <Card className="floating-glass-card group relative overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
+                      <div
+                        className={`absolute inset-x-0 top-0 h-16 bg-gradient-to-r ${
+                          i % 2 === 0
+                            ? "from-cyan-500/20 to-blue-600/20"
+                            : "from-violet-500/20 to-fuchsia-600/20"
+                        } opacity-80`}
+                      />
+                      <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r from-cyan-400/0 via-primary/20 to-violet-400/0 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100" />
+
+                      <CardContent className="relative p-4 text-center">
                         <p className="text-2xl font-bold gradient-text">
                           <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                         </p>

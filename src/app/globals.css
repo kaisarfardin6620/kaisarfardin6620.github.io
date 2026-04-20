@@ -275,6 +275,32 @@ main > section:not(:last-of-type)::after {
     0 0 60px oklch(0.75 0.18 195 / 8%);
 }
 
+/* Reusable floating glass card */
+.floating-glass-card {
+  border: 1px solid oklch(1 0 0 / 12%);
+  background: oklch(1 0 0 / 58%);
+  backdrop-filter: blur(18px);
+  transform: translate3d(0, 0, 0);
+  will-change: transform, box-shadow;
+  transition:
+    transform 280ms cubic-bezier(0.2, 0.65, 0.2, 1),
+    box-shadow 280ms cubic-bezier(0.2, 0.65, 0.2, 1),
+    border-color 280ms ease,
+    background-color 280ms ease;
+}
+
+.floating-glass-card:hover {
+  transform: translate3d(0, -6px, 0);
+  border-color: oklch(0.75 0.18 195 / 38%);
+  box-shadow:
+    0 24px 40px oklch(0.1 0.01 260 / 22%),
+    0 10px 26px oklch(0.75 0.18 195 / 14%);
+}
+
+.dark .floating-glass-card {
+  background: oklch(0.24 0.025 260 / 62%);
+}
+
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(

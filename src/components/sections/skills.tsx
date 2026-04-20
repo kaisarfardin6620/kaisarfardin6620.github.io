@@ -97,7 +97,7 @@ export function Skills() {
                 delay={catIndex * 0.15}
                 className={isSingleCardInLastRow ? "md:col-start-2" : undefined}
               >
-                <Card className="group relative h-full overflow-hidden border-border/50 bg-card/55 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/10 backdrop-blur-sm">
+                <Card className="floating-glass-card group relative h-full overflow-hidden transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15">
                   <div
                     className={`pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-r ${cat.gradient} opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-15`}
                   />
