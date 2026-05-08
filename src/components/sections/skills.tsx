@@ -86,8 +86,8 @@ export function Skills() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {skillCategories.map((cat, catIndex) => {
-            const Icon = iconMap[cat.icon] ?? Brain;
-            const RowIcon = rowIconMap[cat.icon] ?? Sparkles;
+            const Icon = (iconMap[cat.icon] || Brain) as React.ComponentType<any>;
+            const RowIcon = (rowIconMap[cat.icon] || Sparkles) as React.ComponentType<any>;
             
             // Bento logic: AI (0) spans 2, Backend (1) spans 1, Data (2) spans 1, MLOps (3) spans 2
             const spanClass = 
