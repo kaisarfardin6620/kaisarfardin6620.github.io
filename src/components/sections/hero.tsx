@@ -9,6 +9,14 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Magnetic } from "@/components/motion/magnetic";
 import { TextReveal } from "@/components/motion/text-reveal";
+import { Hero3D } from "./hero-3d";
+import dynamic from "next/dynamic";
+
+// Dynamically import to avoid SSR issues with Three.js
+const DynamicHero3D = dynamic(() => import("./hero-3d").then(m => m.Hero3D), { 
+  ssr: false,
+  loading: () => <div className="absolute inset-0 z-0" />
+});
 import { MagicBorder } from "@/components/motion/magic-border";
 
 
@@ -111,6 +119,9 @@ export function Hero() {
         />
 
       </div>
+
+      {/* 3D Hero Element */}
+      <DynamicHero3D />
 
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
 
