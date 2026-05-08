@@ -47,7 +47,7 @@ function ProjectCard({
   range: [number, number];
   targetScale: number;
 }) {
-  const Icon = iconMap[project.icon] ?? Code;
+  const Icon = (iconMap[project.icon] || Code) as any;
   const hasLinks = Boolean(
     project.links?.live ||
       project.links?.repo ||
