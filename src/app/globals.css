@@ -155,13 +155,11 @@
     /* Bold atmosphere glows */
     radial-gradient(at 0% 0%, oklch(0.35 0.12 260 / 40%) 0, transparent 45%), 
     radial-gradient(at 100% 0%, oklch(0.30 0.10 280 / 30%) 0, transparent 45%),
-    radial-gradient(at 50% 50%, oklch(0.25 0.05 260 / 20%) 0, transparent 100%),
-    /* The subtle tech grid */
-    linear-gradient(oklch(1 0 0 / 6%) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 6%) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+    radial-gradient(at 50% 50%, oklch(0.25 0.05 260 / 20%) 0, transparent 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%;
   background-attachment: fixed;
 }
+
 
 .section-surface {
   background: linear-gradient(
@@ -234,25 +232,11 @@
   }
 }
 
-/* Unified section texture + separators */
 main > section {
   position: relative;
   isolation: isolate;
 }
 
-main > section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.18;
-  background-image:
-    linear-gradient(oklch(1 0 0 / 4%) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 4%) 1px, transparent 1px),
-    radial-gradient(oklch(1 0 0 / 10%) 0.35px, transparent 0.35px);
-  background-size: 48px 48px, 48px 48px, 4px 4px;
-}
 
 main > section > * {
   position: relative;
@@ -276,11 +260,8 @@ main > section:not(:last-of-type)::after {
   );
 }
 
-.dark main > section::before {
-  opacity: 0.22;
-}
+.dark main > section::after {
 
-.dark main > section:not(:last-of-type)::after {
   background: linear-gradient(
     to bottom,
     transparent 0%,
